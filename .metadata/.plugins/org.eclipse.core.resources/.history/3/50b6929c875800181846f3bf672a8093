@@ -1,0 +1,54 @@
+package untrace.test.advidi;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+
+public class RestLayer {
+
+	private static ObjectMapper om = new ObjectMapper();
+	
+	public static void main (String [] args) {
+		
+/***| CONFIGURE THE REST ENDPOINTS |***/
+		
+		
+		
+		Spark.port(8123);
+		
+	 // Resolves to "http://localhost:4567/chartData1/"
+		Spark.get("/chartData1/", new Route() {
+
+            
+			public Object handle( Request request, Response response ){
+				new CsvReader().extractAllData();
+				return getChart1Data();
+            }
+		});
+		
+	 // Resolves to "http://localhost:4567/chartData2/"
+		Spark.get("/chartData2/", new Route() {
+			
+			public Object handle( Request request, Response response ){
+            		
+				return om.writeValueAsString
+            }	
+		});
+	}
+	
+/***| ENDPOINT PROCESSING |***/
+
+	private static String getChart1Data(){
+//		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+	private static String getChart2Data(){
+//		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+}

@@ -1,0 +1,41 @@
+package untrace.test.advidi;
+
+import java.util.HashMap;
+
+public class ChartDataSingleton {
+	private static ChartDataSingleton chartData = null;
+	private static HashMap<Long, Long> data = null;
+	
+	private ChartDataSingleton() {
+		// Private no args constructor - habit
+	}
+	
+	private ChartDataSingleton( HashMap<Long,Long> input ){
+		// Private constructor - required
+		data = input;
+		chartData = new ChartDataSingleton();
+	}
+	
+	private static ChartDataSingleton init() {
+
+		// Load all data
+		HashMap<Long,Long> dataMap = extractDataSeries();
+		
+		return chartData;
+	}
+	
+	public static ChartDataSingleton getInstance() {
+		
+			// INITIALIZE IF EMPTY
+			if ( chartData == null ) {
+				init();
+			}
+		
+		return chartData;
+	}
+	
+	public HashMap<Long,Long> getAllData(){
+		return data;
+	}
+	
+}

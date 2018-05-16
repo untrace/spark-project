@@ -1,0 +1,5 @@
+package untrace.test.rest.models;
+
+public class ClosingPriceResponseModels {
+
+}

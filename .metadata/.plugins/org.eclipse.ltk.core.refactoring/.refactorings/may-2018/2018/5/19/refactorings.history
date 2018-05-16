@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;untrace.test.advidi.SparkInit&apos; to &apos;RestLayer&apos;&#x0A;- Original project: &apos;may-2018&apos;&#x0A;- Original element: &apos;untrace.test.advidi.SparkInit&apos;&#x0A;- Renamed element: &apos;untrace.test.advidi.RestLayer&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SparkInit&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;untrace.test.advidi{SparkInit.java[SparkInit" matchStrategy="1" name="RestLayer" qualified="false" references="true" similarDeclarations="false" stamp="1526121171991" textual="false" version="1.0"/>
+</session>

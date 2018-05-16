@@ -1,0 +1,5 @@
+package untrace.test.auth;
+
+public class ValidationProvider {
+
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="spark.Response"/>
+<fullyQualifiedTypeName name="spark.Request"/>
+<fullyQualifiedTypeName name="spark.Route"/>
+<fullyQualifiedTypeName name="spark.Spark"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.nio.file.Paths"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="java.util.stream.Stream"/>
+<fullyQualifiedTypeName name="java.util.Objects"/>
+<fullyQualifiedTypeName name="untrace.test.models.DataPoint"/>
+<fullyQualifiedTypeName name="untrace.test.models.InternalClosingPriceModel"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="untrace.test.models.ProcessingModel"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+<fullyQualifiedTypeName name="untrace.test.rest.models.ClosingPriceRequest"/>
+<fullyQualifiedTypeName name="untrace.test.models.ExternalDataPoint"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="untrace.test.rest.models.ClosingPriceResponse"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.math.RoundingMode"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.SignatureException"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.ExpiredJwtException"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.IncorrectClaimException"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.Claims"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.Header"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.Jwt"/>
+<fullyQualifiedTypeName name="io.jsonwebtoken.Jwts"/>
+</qualifiedTypeNameHistroy>

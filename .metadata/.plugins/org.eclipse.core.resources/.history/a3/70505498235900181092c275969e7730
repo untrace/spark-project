@@ -1,0 +1,11 @@
+package untrace.test.auth;
+
+public class ValidationProvider {
+
+	//auth0 JWT client secret for test case
+	private static final String clientSecret= "UP_8-b9Prwo9U8ebnBFVrt3kdBRuh5bs0cb-1AWSRMZtHpizOUB8f3gz9vATtZJn";
+	
+	
+	
+	
+}

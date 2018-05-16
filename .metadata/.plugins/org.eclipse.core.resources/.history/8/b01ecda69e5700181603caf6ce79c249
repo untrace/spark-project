@@ -1,0 +1,39 @@
+package untrace.test.advidi;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class CsvReader {
+	
+	private static final Path path = Paths.get("src/main/resources/F.csv");
+
+	public static HashMap<String, String> extractDataSeries() {
+		HashMap<Long, Long> output = new HashMap<Long, Long>();
+		
+//		Path path = Paths.get("src/main/resources/F.csv");
+				
+		HashMap<String,String> test = Files.lines(path)
+	            .skip(1) // ignore the header
+	            .map(row -> row[4]) // the daily closing rate is row 4 hard-coded for this implementation
+	            .filter(Objects::nonNull) // ignore null Strings
+                .filter(s -> s.trim().length() > 0) // ignore empty Strings
+	            .collect(toList());
+		
+		for (String test1: test.keySet()) {
+			System.out.println("Tester");
+		}
+		
+		return output;
+	}
+	
+	
+
+}

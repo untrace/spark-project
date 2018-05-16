@@ -1,0 +1,46 @@
+package untrace.test.advidi;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+
+public class RestLayer {
+
+	public static void main (String [] args) {
+		
+/***| CONFIGURE THE REST ENDPOINTS |***/
+
+	 // Resolves to "http://localhost:4567/chartData1/"
+		Spark.get("/chartData1/", new Route() {
+
+            
+			public Object handle( Request request, Response response ){
+            		
+				return getChart1Data();
+            }
+		});
+		
+	 // Resolves to "http://localhost:4567/chartData2/"
+		Spark.get("/chartData2/", new Route() {
+			
+			public Object handle( Request request, Response response ){
+            		
+				return getChart2Data();
+            }	
+		});
+	}
+	
+/***| ENDPOINT PROCESSING |***/
+
+	private static String getChart1Data(){
+		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+	private static String getChart2Data(){
+		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+}

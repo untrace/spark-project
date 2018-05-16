@@ -1,0 +1,30 @@
+package untrace.test.advidi;
+
+public class DataAssembler {
+
+	public DataAssembler() {
+		
+	}
+	
+//	public getYearlyData() { //Load all data
+//		
+//	}
+//	
+//	public getMonthlyData( String year ) {
+//		
+//		Map<String, String> myList =
+//
+//			myList
+//			    .stream()
+//			    .filter(s -> s.startsWith("c"))
+//			    .map(String::toUpperCase)
+//			    .sorted()
+//			    .forEach(System.out::println);
+//	}
+//	
+//	public getDailyData( String year, String month ) {
+//		
+//	}
+	
+	
+}

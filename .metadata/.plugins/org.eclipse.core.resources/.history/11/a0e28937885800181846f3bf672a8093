@@ -1,0 +1,30 @@
+package untrace.test.rest.models;
+
+public class ClosingPriceResponse {
+	
+	List<ExternalDataPoint> datapoints;
+	
+	public ClosingPriceResponse() {
+	}
+	
+	public ClosingPriceResponse( List<ExternalDataPoint> datapoints ) {
+		this.datapoints = datapoints;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public float getClosingPrice() {
+		return closingPrice;
+	}
+
+	public void setClosingPrice(float closingPrice) {
+		this.closingPrice = closingPrice;
+	}
+
+}

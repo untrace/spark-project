@@ -1,0 +1,72 @@
+package untrace.test.advidi;
+
+import java.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+import untrace.test.models.ExternalDataPoint;
+import untrace.test.rest.models.ClosingPriceRequest;
+import untrace.test.rest.models.ClosingPriceResponse;
+
+public class RestLayer {
+
+	private static ObjectMapper objectMapper = new ObjectMapper();
+	
+	/***| CONFIGURE THE REST ENDPOINTS |***/
+	
+	public static void main (String [] args) {
+			
+		ChartDataSingleton.getInstance(); // Load the file as required into memory
+		
+		Spark.port(8123); // set the port of the local server
+		
+	 // Resolves to "http://localhost:8123/chartData2/"
+		Spark.post("/chartData/", new Route() {
+			
+			public Object handle( Request request, Response response ){
+				try {
+					
+					if (request.headers().contains("authorization")){
+						
+					}
+					else {
+						response.status(401);
+						return "Invalid Token detected";
+					}
+					
+					ClosingPriceRequest closingPriceRequest = objectMapper.readValue(request.body(), ClosingPriceRequest.class);
+					
+					return objectMapper.writeValueAsString( getClosingPriceResponse(closingPriceRequest) );
+				}catch( Exception e ) {
+					
+					e.printStackTrace(); // TODO: specific error handling
+					return "FAILURE";
+				}
+            }	
+		});
+	}
+	
+	/***| ENDPOINT PROCESSING |***/
+	
+	private static ClosingPriceResponse getClosingPriceResponse( ClosingPriceRequest request ) {
+		
+		if ( request.getDay() == null && request.getMonth() == null && request.getYear() == null ) {
+			return new ClosingPriceResponse( ChartDataSingleton.getInstance().processYearlyData() );
+		}
+		else if ( request.getDay() == null && request.getMonth() == null && request.getYear() != null ) {
+			return new ClosingPriceResponse( ChartDataSingleton.getInstance().processMonthlyData( request.getYear() ) );
+		}
+		else if ( request.getDay() == null && request.getMonth() != null && request.getYear() != null ) {
+			return new ClosingPriceResponse( ChartDataSingleton.getInstance().processDailyData( request.getYear(), request.getMonth() ) );
+		}
+		else if ( request.getDay() != null && request.getMonth() != null && request.getYear() != null ) {
+			return new ClosingPriceResponse( ChartDataSingleton.getInstance().processDay( request.getYear(), request.getMonth(), request.getDay() ) );
+		}
+		
+		return new ClosingPriceResponse( new ArrayList<ExternalDataPoint>()); // return an empty collection rather than failing
+	}
+	
+
+}

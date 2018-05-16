@@ -1,0 +1,13 @@
+package untrace.test.rest.models;
+
+public class ClosingPriceResponseModels {
+	private String date;
+	private float closingPrice;
+	
+	public ClosingPriceResponseModels() {
+	}
+	
+	public ClosingPriceResponseModels(String date, float closingPrice) {
+		
+	}
+}

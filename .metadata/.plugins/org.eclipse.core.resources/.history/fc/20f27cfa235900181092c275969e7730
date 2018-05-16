@@ -1,0 +1,46 @@
+package untrace.test.auth;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Header;
+import io.jsonwebtoken.IncorrectClaimException;
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
+
+public class ValidationProvider {
+
+	//auth0 JWT client secret for test case
+	private static final String clientSecret= "UP_8-b9Prwo9U8ebnBFVrt3kdBRuh5bs0cb-1AWSRMZtHpizOUB8f3gz9vATtZJn";
+	private String tokenProvided;
+	
+	public ValidationProvider(String tokenProvided) {
+		this.tokenProvided = tokenProvided;
+	}
+	
+	public boolean decodeToken() throws ExpiredJwtException, SignatureException {
+		boolean decodedSuccessfully = false;
+		
+		byte[] decoderKey = clientSecret.getBytes();
+		
+		String jwt = this.tokenProvided;
+			@SuppressWarnings({ "unchecked", "rawtypes" }) // Code complains if we don't add suppression
+		Jwt<Header,Claims> decodedJwt = Jwts.parser().setSigningKey( decoderKey).parse(jwt);
+			
+			@SuppressWarnings("rawtypes") // Code complains if we don't add suppression
+		Header jwtHeader = decodedJwt.getHeader();
+		Claims jwtClaims = decodedJwt.getBody();
+
+		if ( !"HS256".equals( jwtHeader.get("alg") )) {
+			
+		    throw new SignatureException("EXPECTED HS256");
+		}
+
+		// TODO: Implement time based claims expiry flow here
+
+		//JWT is trustworthy if we have reached this point
+		decodedSuccessfully = true;
+		
+		return decodedSuccessfully;
+	}
+}

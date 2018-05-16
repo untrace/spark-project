@@ -1,0 +1,46 @@
+package untrace.test.advidi;
+
+import java.util.HashMap;
+
+public class ChartDataSingleton {
+	
+	/*** NOTE: NOT THREAD SAFE - NO LOCK MECHANISM ***/
+	
+	private static ChartDataSingleton chartData = null;
+	private static HashMap<Long, Long> dataMap = null;
+	
+	private ChartDataSingleton() {
+		// Private no args constructor - habit
+	}
+	
+	private ChartDataSingleton( HashMap<Long,Long> input ){
+		// Private constructor - required
+		
+		dataMap = input;
+		chartData = new ChartDataSingleton();
+	}
+	
+	private static ChartDataSingleton init() {
+		// Load all data
+		
+//		HashMap<Long,Long> dataMap = 
+				new CsvReader.extractDataSeries();
+		
+		return chartData;
+	}
+	
+	public static ChartDataSingleton getInstance() {
+		 // Init if empty
+		
+			if ( chartData == null ) {
+				init();
+			}
+		
+		return chartData;
+	}
+	
+	public HashMap<Long,Long> getAllData(){
+		return dataMap;
+	}
+	
+}

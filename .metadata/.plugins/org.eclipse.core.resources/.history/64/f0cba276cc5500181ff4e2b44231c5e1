@@ -1,0 +1,22 @@
+package untrace.test.advidi;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+
+public class SparkInit {
+
+	public static void main (String [] args) {
+		
+	 // Outputs a REST Endpoint to a path (defaults to localhost)
+		Spark.get("/chart/", new Route() { 
+		// Resolves to "http://localhost:4567/chart/"
+            
+			public Object handle( Request request, Response response ){
+            		return "Hello World from Spark";
+            }
+			
+		});
+	}
+}

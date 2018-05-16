@@ -1,0 +1,17 @@
+package untrace.test.advidi;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+
+public class SparkInit {
+
+	public static void main (String [] args) {
+		get( new Route("/users/:id"){
+			
+            public Object handle( Request request, Response response ) {
+            return  "User: username=test, email=test@test.net";
+        }        
+    });
+	}
+}

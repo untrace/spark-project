@@ -1,0 +1,67 @@
+package untrace.test.advidi;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import untrace.test.models.DataPoint;
+
+public class CsvReader {
+	
+	private static final Path path = Paths.get("src/main/resources/F.csv");
+	
+	private List<DataPoint> yearlyData = new ArrayList<DataPoint>(); 
+	private HashMap<String, List<DataPoint>> monthlyData = new HashMap<String, List<DataPoint>>();
+	private HashMap<String, List<DataPoint>> dailyData = new HashMap<String, List<DataPoint>>();
+	
+	public CsvReader() {
+		
+	}
+	
+	public void extractAllData() {
+		
+		/*** 
+		 * I attempted this with streams in Java 8:
+		 * The complication was trying to do an efficent pre-processing of the date and so I opted to 
+		 * rather go for the simplest readable code.
+		 * I would rather get code that works, write the test-case and optimize later, knowing that I haven't
+		 * broken anything.
+		***/
+		Map<String,BigDecimal> dayToValue = new HashMap<String, BigDecimal>(); // chose bigDecimal because of a divison activty happening later
+		// Ignore the first line, get column 0 [date] and column 4 [closing price]
+		
+		ArrayList<String> lines = new ArrayList<String>();
+		lines.add("2/16/12,12.38,12.77,12.38,12.74,10.064644,49164400");
+		lines.add("2/17/12,12.84,12.88,12.71,12.75,10.072542,30778000");
+
+		for (String line : lines) {
+			System.out.println(line);
+			
+			if (line!=null && line.length() > 0 && line.contains(",")) { // ensure the line is readable and can be split
+				String rawDate = line.split(",")[0];
+				String closingPrice = line.split(",")[4];
+				System.out.println("Closing Price: "+ closingPrice);
+		
+				if (rawDate !=null && rawDate.length() > 0 && rawDate.contains("/")) { // ensure the line is readable and can be split
+					String day = rawDate.split("/")[1];
+					String month = rawDate.split("/")[0];
+					String year = rawDate.split("/")[2];
+				}
+			}	
+		}
+	}
+		
+	
+	
+	
+
+}

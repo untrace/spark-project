@@ -1,0 +1,21 @@
+package untrace.test.advidi;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+
+public class SparkInit {
+
+	public static void main (String [] args) {
+		
+		// SIMPLE ENDPOINT ROUTE GENERATION WITH SPARK
+		Spark.get("/chart/", new Route() {
+            
+			public Object handle( Request request, Response response ){
+            		return "Hello World from Spark";
+            }
+			
+		});
+	}
+}

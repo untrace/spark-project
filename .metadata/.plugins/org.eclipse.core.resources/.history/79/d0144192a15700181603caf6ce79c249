@@ -1,0 +1,5 @@
+package untrace.test.models;
+
+public class InternalClosingPriceModel {
+
+}

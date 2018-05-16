@@ -1,0 +1,58 @@
+package untrace.test.advidi;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
+import untrace.test.rest.models.ClosingPriceRequest;
+import untrace.test.rest.models.ClosingPriceResponse;
+
+public class RestLayer {
+
+	private static ObjectMapper objectMapper = new ObjectMapper();
+	
+	public static void main (String [] args) {
+		
+/***| CONFIGURE THE REST ENDPOINTS |***/
+		
+		
+		
+		Spark.port(8123); // set the port of the local server
+		
+	 // Resolves to "http://localhost:8123/chartData1/"
+		Spark.get("/chartData1/", new Route() {
+
+            
+			public Object handle( Request request, Response response ){
+				new CsvReader().extractAllData();
+				return getChart1Data();
+            }
+		});
+		
+	 // Resolves to "http://localhost:8123/chartData2/"
+		Spark.get("/chartData2/", new Route() {
+			
+			public Object handle( Request request, Response response ){
+				ClosingPriceRequest closingPriceRequest = objectMapper.readValue(request.body(), ClosingPriceRequest.class);
+				ClosingPriceResponse closingPriceResponse;
+				
+				return objectMapper.writeValueAsString(closingPriceResponse);
+            }	
+		});
+	}
+	
+/***| ENDPOINT PROCESSING |***/
+
+	private static String getChart1Data(){
+//		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+	private static String getChart2Data(){
+//		new CsvReader().extractDataSeries();
+		return "Done";
+	}
+	
+}

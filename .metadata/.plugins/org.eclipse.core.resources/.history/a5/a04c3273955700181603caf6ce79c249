@@ -1,0 +1,30 @@
+package untrace.test.advidi;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class CsvReadingLayer {
+
+	public static HashMap<Long, Long> extractDataSeries() {
+		HashMap<Long, Long> output = new HashMap<Long, Long>();
+		
+		try {
+			Map<List<String>, String> translationMap = readFile("dictionary.csv").stream()
+		            .map(line -> Splitter.on(",").splitToList(line))
+		            .collect(
+		                Collectors.toMap(
+		                    l -> Lists.newArrayList(l.subList(0, 2)),
+		                    l -> l.get(2)
+		                )
+		            );
+		}catch(Exception e) {
+			System.err.println("EXCEPTION CAUGHT");
+			e.printStackTrace();
+		}
+		
+		return output;
+	}
+
+}

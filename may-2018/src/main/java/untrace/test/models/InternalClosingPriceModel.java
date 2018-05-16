@@ -1,0 +1,38 @@
+package untrace.test.models;
+
+import java.math.BigDecimal;
+
+public class InternalClosingPriceModel {
+
+	private int year;
+	private int month;
+	private int day;
+	private BigDecimal closingPrice;
+	
+	public InternalClosingPriceModel( String date, String closing ){
+		
+		String[] output = date.split("/");
+		
+		this.day = Integer.parseInt( output[1] );
+		this.month =  Integer.parseInt( output[0] );
+		this.year =  Integer.parseInt( output[2] );
+		this.closingPrice = new BigDecimal( closing.trim() );
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public BigDecimal getClosingPrice() {
+		return closingPrice;
+	}
+
+}

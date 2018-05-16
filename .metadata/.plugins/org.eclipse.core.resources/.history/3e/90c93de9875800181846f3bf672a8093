@@ -1,0 +1,32 @@
+package untrace.test.rest.models;
+
+public class ClosingPriceResponse {
+	
+	private String date;
+	private float closingPrice;
+	
+	public ClosingPriceResponse() {
+	}
+	
+	public ClosingPriceResponse( String date, float closingPrice ) {
+		this.date = date;
+		this.closingPrice = closingPrice;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public float getClosingPrice() {
+		return closingPrice;
+	}
+
+	public void setClosingPrice(float closingPrice) {
+		this.closingPrice = closingPrice;
+	}
+
+}
